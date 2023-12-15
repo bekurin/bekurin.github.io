@@ -29,9 +29,8 @@ jobs:
     - name: Build
       run: npm run build
     - name: Upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v2
       with:
-        name: production
         path: './build'
   cd:
     needs: [ci]
@@ -43,11 +42,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v4
-      with:
-          name: production
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v3
