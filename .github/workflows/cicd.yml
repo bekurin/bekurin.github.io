@@ -22,14 +22,15 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: '.'
+        name: production
+        path: './build'
   cd:
     needs: [ci]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
       with:
-          name: production-files
+          name: production
           path: ./build
     - name: Setup Pages
       uses: actions/configure-pages@v4
