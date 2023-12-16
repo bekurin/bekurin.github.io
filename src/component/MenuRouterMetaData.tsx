@@ -1,4 +1,4 @@
-import { MenuType, GroupMenu} from './Menu/types'
+import { MenuType, GroupMenu} from './menu/types'
 
 const MenuRouterMetaData: GroupMenu[] = [
     {

@@ -1,4 +1,4 @@
-import { GroupMenu, MenuType, RouteMenu } from "../Menu/types"
+import { GroupMenu, MenuType, RouteMenu } from "../menu/types"
 import { Routes, Route } from "react-router-dom"
 import MenuRouterMetaData from "../MenuRouterMetaData"
 
