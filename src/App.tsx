@@ -1,4 +1,4 @@
-import Header from './component/Header';
+import Header from './component/Header/Header';
 import Menu from './component/Menu'
 import styles from './App.module.css'
 import Router from './component/Router';
