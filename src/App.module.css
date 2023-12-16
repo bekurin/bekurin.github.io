@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* sidemenu 너비와 나머지 공간 */
+    grid-template-rows: 80px 1fr; /* header 높이와 나머지 공간 */
+    grid-template-areas:
+      "header header"
+      "sidemenu content";
+    height: 100vh;
+}
+  
+.header {
+    grid-area: header;
+}
+  
+.sidemenu {
+    grid-area: sidemenu;
+}
+  
+.content {
+    grid-area: content;
+}
+  
