@@ -1,6 +1,5 @@
 
 import { PanelMenu } from 'primereact/panelmenu';
-import styles from './Menu.module.css'
 
 const Menu = () => {
     const items = [
