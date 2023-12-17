@@ -1,8 +1,8 @@
-import Header from './component/Header';
-import Menu from './component/Menu'
-import styles from './App.module.css'
-import Router from './component/Router';
-import { BrowserRouter } from 'react-router-dom';
+import Header from "./component/Header";
+import Menu from "./component/Menu";
+import styles from "./App.module.css";
+import Router from "./component/Router";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
