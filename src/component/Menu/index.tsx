@@ -1,4 +1,4 @@
-import { GroupMenu, MenuType, RouteMenu} from './types'
+import { GroupMenu, MenuType, RouteMenu} from './type'
 import { PanelMenu } from 'primereact/panelmenu';
 import { MenuItem } from 'primereact/menuitem';
 import MenuRouterMetaData from '../MenuRouterMetaData';
