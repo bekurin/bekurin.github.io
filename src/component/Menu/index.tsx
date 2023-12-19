@@ -1,5 +1,5 @@
 import { GroupMenu, MenuType, RouteMenu } from "./type";
-import { PanelMenu } from "primereact/panelmenu";
+import { Menu as PrimeMenu } from "primereact/menu";
 import { MenuItem } from "primereact/menuitem";
 import MenuRouterMetaData from "../MenuRouterMetaData";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ const Menu = () => {
       };
     });
   }
-  return <PanelMenu className={styles.font} model={convertToPrimeReactMenuItems(MenuRouterMetaData)} />;
+  return <PrimeMenu className={styles.container} model={convertToPrimeReactMenuItems(MenuRouterMetaData)} />;
 };
 
 export default Menu;
