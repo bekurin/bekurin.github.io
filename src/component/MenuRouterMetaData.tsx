@@ -1,7 +1,7 @@
 import Course from "../page/Course";
-import User from "../page/User";
 import Teacher from "../page/Teacher";
-import { MenuType, GroupMenu } from "./Menu/type";
+import User from "../page/User";
+import { GroupMenu, MenuType } from "./Menu/type";
 
 const MenuRouterMetaData: GroupMenu[] = [
   {
