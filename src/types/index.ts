@@ -1,60 +1,63 @@
 export interface Map {
-  mapId: string
-  mapName: string
-  mode: string
-  lastUpdatedAt: string
+  mapId: number;
+  mapName: string;
+  mode: string;
+  lastUpdatedAt: string;
 }
 
 export interface BrawlerStat {
-  brawlerId: string
-  brawlerName: string
-  winRate: number
-  pickRate: number
-  starRate: number
-  totalPick: number
-  totalWin: number
-  tier: Tier
-  totalStarPlayer: number
+  brawlerId: string;
+  brawlerName: string;
+  winRate: number;
+  pickRate: number;
+  starRate: number;
+  totalPick: number;
+  totalWin: number;
+  tier: Tier;
+  totalStarPlayer: number;
 }
 
 export interface Combination {
-  combinationHash: string
-  brawlers: BrawlerInfo[]
-  winRate: number
-  totalGame: number
-  totalWin: number
+  combinationHash: string;
+  brawlers: BrawlerInfo[];
+  winRate: number;
+  totalGame: number;
+  totalWin: number;
 }
 
 export interface BrawlerInfo {
-  id: string
-  name: string
+  id: string;
+  name: string;
 }
 
-export type Tier = 'OP' | '1T' | '2T' | '3T' | '4T'
+export type Tier = "OP" | "1T" | "2T" | "3T" | "4T";
 
-export interface ApiResponse<T> {
-  totalCount: number
-  data: T
-}
-
-export interface MapsData {
-  maps: Map[]
+export interface PageResponse<T> {
+  totalCount: number;
+  totalPages: number;
+  currentPage: number;
+  size: number;
+  hasNext: boolean;
+  hasPrevious: boolean;
+  isFirst: boolean;
+  isLast: boolean;
+  data: T[];
 }
 
 export interface BrawlersData {
-  brawlers: BrawlerStat[]
+  brawlers: BrawlerStat[];
 }
 
 export interface CombinationsData {
-  combinations: Combination[]
+  combinations: Combination[];
 }
 
 export interface SystemStatus {
-  status: string
+  status: string;
   data: {
-    lastBatchRun: string
-    totalLogCount: number
-    activeMapCount: number
-    version: string
-  }
+    lastBatchRun: string;
+    totalLogCount: number;
+    activeMapCount: number;
+    version: string;
+  };
 }
