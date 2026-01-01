@@ -5,6 +5,8 @@ import { useCombinations } from '../api/combinations'
 import Tabs from '../components/Tabs'
 import BrawlerStatsTable from '../components/BrawlerStatsTable'
 import CombinationList from '../components/CombinationCard'
+import { BrawlerStatsTableSkeleton, CombinationListSkeleton } from '../components/Skeleton'
+import { EmptyState, InsufficientDataState } from '../components/EmptyState'
 
 const TABS = [
   { id: 'brawlers', label: '브롤러 통계' },
@@ -54,49 +56,29 @@ function MapDetailPage() {
 
       <section>
         {isLoading ? (
-          <LoadingSkeleton tab={activeTab} />
+          activeTab === 'brawlers' ? (
+            <BrawlerStatsTableSkeleton count={5} />
+          ) : (
+            <CombinationListSkeleton count={3} />
+          )
         ) : isError ? (
-          <div className="rounded-lg bg-surface p-8 text-center">
-            <p className="text-text-secondary">데이터를 불러오는 중 오류가 발생했습니다.</p>
-          </div>
+          <EmptyState
+            icon="error"
+            title="오류 발생"
+            message="데이터를 불러오는 중 오류가 발생했습니다."
+          />
         ) : activeTab === 'brawlers' ? (
           brawlers.length > 0 ? (
             <BrawlerStatsTable brawlers={brawlers} />
           ) : (
-            <EmptyState message="브롤러 통계 데이터가 없습니다." />
+            <InsufficientDataState />
           )
-        ) : (
+        ) : combinations.length > 0 ? (
           <CombinationList combinations={combinations} />
+        ) : (
+          <InsufficientDataState />
         )}
       </section>
-    </div>
-  )
-}
-
-function LoadingSkeleton({ tab }: { tab: string }) {
-  if (tab === 'brawlers') {
-    return (
-      <div className="space-y-2">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-20 animate-pulse rounded-lg bg-surface" />
-        ))}
-      </div>
-    )
-  }
-
-  return (
-    <div className="space-y-3">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <div key={i} className="h-24 animate-pulse rounded-lg bg-surface" />
-      ))}
-    </div>
-  )
-}
-
-function EmptyState({ message }: { message: string }) {
-  return (
-    <div className="rounded-lg bg-surface p-8 text-center">
-      <p className="text-text-secondary">{message}</p>
     </div>
   )
 }

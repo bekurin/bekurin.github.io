@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import type { BrawlerStat, Tier } from '../types'
 import TierBadge from './TierBadge'
+import GaugeBar from './GaugeBar'
 
 type SortKey = 'winRate' | 'pickRate' | 'tier'
 
@@ -83,9 +84,17 @@ interface BrawlerRowProps {
 }
 
 function BrawlerRow({ brawler }: BrawlerRowProps) {
+  const isOP = brawler.tier === 'OP'
+
   return (
-    <div className="flex items-center gap-4 rounded-lg bg-surface p-3">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-background text-lg font-bold text-text-secondary">
+    <div className="flex items-center gap-4 rounded-lg bg-surface p-3 transition-all">
+      <div
+        className={`flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold ${
+          isOP
+            ? 'bg-tier-op/20 text-tier-op'
+            : 'bg-background text-text-secondary'
+        }`}
+      >
         {brawler.brawlerName.charAt(0)}
       </div>
 
@@ -96,37 +105,14 @@ function BrawlerRow({ brawler }: BrawlerRowProps) {
         </div>
 
         <div className="mt-2 grid grid-cols-2 gap-4">
-          <GaugeBar label="승률" value={brawler.winRate} color="bg-tier-2" />
-          <GaugeBar label="픽률" value={brawler.pickRate} color="bg-secondary" />
+          <GaugeBar label="승률" value={brawler.winRate} />
+          <GaugeBar label="픽률" value={brawler.pickRate} colorClass="bg-secondary" />
         </div>
       </div>
 
       <div className="flex items-center gap-1 text-sm text-primary">
         <span>★</span>
         <span>{brawler.starRate.toFixed(1)}%</span>
-      </div>
-    </div>
-  )
-}
-
-interface GaugeBarProps {
-  label: string
-  value: number
-  color: string
-}
-
-function GaugeBar({ label, value, color }: GaugeBarProps) {
-  return (
-    <div>
-      <div className="flex justify-between text-xs">
-        <span className="text-text-secondary">{label}</span>
-        <span className="text-text-primary">{value.toFixed(1)}%</span>
-      </div>
-      <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
-        <div
-          className={`h-full rounded-full ${color}`}
-          style={{ width: `${Math.min(value, 100)}%` }}
-        />
       </div>
     </div>
   )
