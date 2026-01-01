@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import type { BrawlerStat, Tier } from '../types'
 import TierBadge from './TierBadge'
 import GaugeBar from './GaugeBar'
+import BrawlerAvatar from './BrawlerAvatar'
 
 type SortKey = 'winRate' | 'pickRate' | 'tier'
 
@@ -84,19 +85,13 @@ interface BrawlerRowProps {
 }
 
 function BrawlerRow({ brawler }: BrawlerRowProps) {
-  const isOP = brawler.tier === 'OP'
-
   return (
     <div className="flex items-center gap-4 rounded-lg bg-surface p-3 transition-all">
-      <div
-        className={`flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold ${
-          isOP
-            ? 'bg-tier-op/20 text-tier-op'
-            : 'bg-background text-text-secondary'
-        }`}
-      >
-        {brawler.brawlerName.charAt(0)}
-      </div>
+      <BrawlerAvatar
+        brawlerId={brawler.brawlerId}
+        brawlerName={brawler.brawlerName}
+        size="md"
+      />
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
