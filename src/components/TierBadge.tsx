@@ -5,7 +5,7 @@ interface TierBadgeProps {
 }
 
 const TIER_STYLES: Record<Tier, string> = {
-  OP: 'bg-tier-op text-white animate-pulse',
+  OP: 'bg-tier-op text-white shadow-lg shadow-tier-op/30 animate-pulse',
   '1T': 'bg-tier-1 text-white',
   '2T': 'bg-tier-2 text-white',
   '3T': 'bg-tier-3 text-white',
