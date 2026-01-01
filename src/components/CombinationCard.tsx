@@ -1,4 +1,5 @@
 import type { Combination } from '../types'
+import BrawlerAvatar from './BrawlerAvatar'
 
 interface CombinationCardProps {
   combination: Combination
@@ -23,13 +24,14 @@ function CombinationCard({ combination, rank }: CombinationCardProps) {
       <div className="flex items-center gap-4">
         <div className="flex -space-x-3">
           {combination.brawlers.map((brawler, index) => (
-            <div
+            <BrawlerAvatar
               key={brawler.id}
-              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-surface bg-background text-sm font-bold text-text-secondary"
-              style={{ zIndex: 3 - index }}
-            >
-              {brawler.name.charAt(0)}
-            </div>
+              brawlerId={brawler.id}
+              brawlerName={brawler.name}
+              size="md"
+              className="border-2 border-surface"
+              style={{ zIndex: combination.brawlers.length - index }}
+            />
           ))}
         </div>
 
