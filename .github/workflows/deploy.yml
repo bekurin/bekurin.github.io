@@ -30,10 +30,28 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build all projects
+        run: npm run build:all
         env:
           VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+
+      - name: Merge builds
+        run: npm run merge
+
+      - name: Create 404.html for SPA fallback
+        run: |
+          # Create 404.html for each sub-project (SPA routing)
+          for dir in dist/*/; do
+            if [ -f "${dir}index.html" ]; then
+              cp "${dir}index.html" "${dir}404.html"
+              echo "Created 404.html for ${dir}"
+            fi
+          done
+          # Root 404.html for landing page
+          if [ -f "dist/index.html" ]; then
+            cp dist/index.html dist/404.html
+            echo "Created root 404.html"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

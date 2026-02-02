@@ -1,0 +1,12 @@
+{
+  "projects": [
+    {
+      "name": "hypercharge",
+      "title": "BrawlStats",
+      "description": "브롤스타즈 글로벌 랭커 데이터 기반 맵별 브롤러 승률 및 최적 조합 통계",
+      "path": "/hypercharge",
+      "icon": "game",
+      "color": "#FFD700"
+    }
+  ]
+}
