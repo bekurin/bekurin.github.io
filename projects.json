@@ -7,6 +7,14 @@
       "path": "/hypercharge",
       "icon": "game",
       "color": "#FFD700"
+    },
+    {
+      "name": "server-driven-ui",
+      "title": "Server Driven UI",
+      "description": "Server Driven UI 백오피스",
+      "path": "/server-driven-ui",
+      "icon": "setting",
+      "color": "#5865F2"
     }
   ]
 }

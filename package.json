@@ -10,6 +10,7 @@
     "dev": "npm run dev --workspace=@bekurin/hypercharge",
     "dev:landing": "npm run dev --workspace=@bekurin/landing",
     "dev:hypercharge": "npm run dev --workspace=@bekurin/hypercharge",
+    "dev:server-driven-ui": "npm run dev --workspace=@bekurin/server-driven-ui",
     "build": "npm run build:all && npm run merge",
     "build:all": "npm run build --workspaces --if-present",
     "merge": "node scripts/merge-builds.mjs",
