@@ -1,8 +1,7 @@
-import { Form, Space } from 'antd'
+import { Form, Space, message } from 'antd'
 import type { SDUIComponent, ApiAction } from '@/types/sdui'
 import { SDUIRendererList } from './SDUIRenderer'
-import axios from 'axios'
-import { message } from 'antd'
+import apiClient from '@/api/apiClient'
 
 interface FormRendererProps {
   component: SDUIComponent
@@ -18,10 +17,11 @@ export function FormRenderer({ component, context }: FormRendererProps) {
 
   const handleFinish = async (values: Record<string, unknown>) => {
     if (onSubmit) {
+      const apiPath = onSubmit.endpoint.replace(/^\/api\/v1/, '')
       try {
-        await axios({
+        await apiClient({
           method: onSubmit.method,
-          url: onSubmit.endpoint,
+          url: apiPath,
           data: values,
         })
         message.success('요청이 완료되었습니다.')

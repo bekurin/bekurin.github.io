@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Modal, message } from 'antd'
-import axios from 'axios'
+import apiClient from '@/api/apiClient'
 import type { SDUIAction } from '@/types/sdui'
 
 interface UseSDUIActionReturn {
@@ -25,12 +25,13 @@ export function useSDUIAction(): UseSDUIActionReturn {
 
       case 'api': {
         const endpoint = interpolatePath(action.endpoint, context)
+        const apiPath = endpoint.replace(/^\/api\/v1/, '')
 
         const callApi = async () => {
           try {
-            const response = await axios({
+            const response = await apiClient({
               method: action.method,
-              url: endpoint,
+              url: apiPath,
             })
             message.success('요청이 완료되었습니다.')
             return response.data

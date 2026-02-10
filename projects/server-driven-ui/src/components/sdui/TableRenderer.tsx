@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Table, Button, Space, Tag } from 'antd'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import apiClient from '@/api/apiClient'
 import type { SDUIComponent, TableColumn, SDUIAction } from '@/types/sdui'
 import { useSDUIAction } from '@/hooks/useSDUIAction'
 import type { ColumnsType } from 'antd/es/table'
@@ -20,10 +20,12 @@ export function TableRenderer({ component }: TableRendererProps) {
   const columns = props?.columns as TableColumn[]
   const pagination = props?.pagination as { pageSize: number } | undefined
 
+  const apiPath = dataSourceUrl?.replace(/^\/api\/v1/, '') ?? ''
+
   const { data, isLoading } = useQuery({
     queryKey: ['table', dataSourceUrl],
     queryFn: async () => {
-      const response = await axios.get(dataSourceUrl)
+      const response = await apiClient.get(apiPath)
       return response.data
     },
     enabled: !!dataSourceUrl,
