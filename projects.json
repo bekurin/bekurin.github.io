@@ -15,6 +15,14 @@
       "path": "/server-driven-ui",
       "icon": "setting",
       "color": "#5865F2"
+    },
+    {
+      "name": "value-rebalancing",
+      "title": "미국주식 밸류 리밸런싱",
+      "description": "라오어의 미국주식 밸류 리밸런싱 계산하는 웹 페이지",
+      "path": "/value-rebalancing",
+      "icon": "code",
+      "color": "#5865F2"
     }
   ]
 }

@@ -15,7 +15,8 @@
     "build:all": "npm run build --workspaces --if-present",
     "merge": "node scripts/merge-builds.mjs",
     "create-project": "node scripts/create-project.mjs",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "dev:value-rebalancing": "npm run dev --workspace=@bekurin/value-rebalancing"
   },
   "devDependencies": {
     "fs-extra": "^11.2.0"
